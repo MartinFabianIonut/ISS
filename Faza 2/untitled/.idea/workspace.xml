@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="11f16c74-767e-4a10-bfb4-7f9cccbb1956" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/dependencies-accessors/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/7.4/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/thriftCompiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/classes/java/main/SeventhWeekServerClient/domain/Artist.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/classes/java/main/SeventhWeekServerClient/domain/Employee.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/classes/java/main/SeventhWeekServerClient/domain/Entity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/classes/java/main/SeventhWeekServerClient/domain/Show.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/classes/java/main/SeventhWeekServerClient/domain/ShowDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/classes/java/main/SeventhWeekServerClient/domain/Ticket.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/libs/Domain-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/src/main/java/ISSProject/domain/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/src/main/java/ISSProject/domain/BookLoans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/src/main/java/ISSProject/domain/BookLoansDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/src/main/java/ISSProject/domain/BookLoansManyToMany.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/src/main/java/ISSProject/domain/Entity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/src/main/java/ISSProject/domain/Librarian.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/src/main/java/ISSProject/domain/Reader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Domain/src/main/java/ISSProject/domain/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/classes/java/main/employee/HelloApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/classes/java/main/employee/controller/BuyingController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/classes/java/main/employee/controller/LoginController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/classes/java/main/employee/controller/ServiceController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/distributions/EmployeeFX-1.0-SNAPSHOT.tar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/distributions/EmployeeFX-1.0-SNAPSHOT.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/libs/EmployeeFX-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/resources/main/employee.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/resources/main/employee/buy.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/resources/main/employee/login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/resources/main/employee/main_stage.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/scripts/EmployeeFX" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/scripts/EmployeeFX.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/src/main/java/ISSProject/HelloApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/src/main/java/ISSProject/controller/LibrarianController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/src/main/java/ISSProject/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/src/main/java/ISSProject/controller/ReaderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/src/main/resources/ISSProject/bibliotecar.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/src/main/resources/ISSProject/cititor.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/src/main/resources/ISSProject/login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/src/main/resources/library.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/LibrarianFX/target/Jurnalizare.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/classes/java/main/SeventhWeekServerClient/network/rpcprotocol/Request.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/classes/java/main/SeventhWeekServerClient/network/rpcprotocol/RequestType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/classes/java/main/SeventhWeekServerClient/network/rpcprotocol/Response.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/classes/java/main/SeventhWeekServerClient/network/rpcprotocol/ResponseType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/classes/java/main/SeventhWeekServerClient/network/utils/AbsConcurrentServer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/classes/java/main/SeventhWeekServerClient/network/utils/AbstractServer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/classes/java/main/SeventhWeekServerClient/network/utils/RpcConcurrentServer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/classes/java/main/SeventhWeekServerClient/network/utils/ServerException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/libs/Networking-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/rpcprotocol/ClientRpcReflectionWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/rpcprotocol/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/rpcprotocol/RequestType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/rpcprotocol/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/rpcprotocol/ResponseType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/rpcprotocol/ServicesRpcProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/utils/AbsConcurrentServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/utils/AbstractServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/utils/RpcConcurrentServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/java/ISSProject/network/utils/ServerException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Networking/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/IArtistRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/IEmployeeRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/IRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/IShowRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/ITicketRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/jdbc/ArtistDBIRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/jdbc/EmployeeDBIRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/jdbc/JdbcUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/jdbc/ShowDBIRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/classes/java/main/SeventhWeekServerClient/persistance/repository/jdbc/TicketDBIRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/libs/Persistance-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/resources/main/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/IBookLoansRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/IBookRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/ILibrarianRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/IReaderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/IRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/jdbc/BookDBIRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/jdbc/BookLoansDBIRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/jdbc/JdbcUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/jdbc/LibrarianDBIRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/java/ISSProject/persistance/repository/jdbc/ReaderDBIRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Persistence/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/classes/java/main/SeventhWeekServerClient/server/ServicesImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/classes/java/main/StartRpcServer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/distributions/ServerRPC-1.0-SNAPSHOT.tar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/distributions/ServerRPC-1.0-SNAPSHOT.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/libs/ServerRPC-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/resources/main/server.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/scripts/ServerRPC" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/scripts/ServerRPC.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/library.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/shows.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/src/main/java/ISSProject/server/ServicesImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/src/main/java/StartRpcServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/ServerRPC/src/main/resources/server.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/build/classes/java/main/SeventhWeekServerClient/service/IObserver.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/build/classes/java/main/SeventhWeekServerClient/service/IService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/build/classes/java/main/SeventhWeekServerClient/service/MyException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/build/libs/Services-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/src/main/java/ISSProject/service/IObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/src/main/java/ISSProject/service/IService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/Services/src/main/java/ISSProject/service/MyException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ISSProject/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/7.4/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/thriftCompiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2PSyqqsMlXvIBnElpgYYCQ1R17W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/GIT/mpp-proiect-java-MartinFabianIonut/TemaSaptamana3"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="11f16c74-767e-4a10-bfb4-7f9cccbb1956" name="Changes" comment="" />
+      <created>1683464972225</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683464972225</updated>
+      <workItem from="1683464973982" duration="52000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

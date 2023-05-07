@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #bfff80;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ISSProject.controller.LibrarianController">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="788.0" layoutX="7.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="1186.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfff80" height="768.0" layoutX="17.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+   <Label layoutX="70.0" layoutY="71.0" text="Carti disponibile:" />
+   <Label fx:id="controlLabel" layoutX="572.0" layoutY="468.0" />
+   <TableView fx:id="allBooksTableView" layoutX="70.0" layoutY="107.0" prefHeight="607.0" prefWidth="335.0" style="-fx-background-color: #1e90ff;">
+     <columns>
+       <TableColumn prefWidth="68.0" style="-fx-background-color: #77d915;" text="Cod carte" >
+          <cellValueFactory>
+             <PropertyValueFactory property="id" />
+          </cellValueFactory>
+       </TableColumn>
+         <TableColumn prefWidth="172.0" style="-fx-background-color: #77d915;" text="Titlu" >
+            <cellValueFactory>
+               <PropertyValueFactory property="title" />
+            </cellValueFactory>
+         </TableColumn>
+       <TableColumn prefWidth="95.0" style="-fx-background-color: #77d915;" text="Autor" >
+          <cellValueFactory>
+             <PropertyValueFactory property="author" />
+          </cellValueFactory>
+       </TableColumn>
+     </columns>
+   </TableView>
+   <TableView layoutX="454.0" layoutY="107.0" prefHeight="374.0" prefWidth="638.0" style="-fx-background-color: #1e90ff;">
+      <columns>
+         <TableColumn prefWidth="107.0" style="-fx-background-color: #77d915;" text="Numar imprumut" />
+         <TableColumn prefWidth="189.0" style="-fx-background-color: #77d915;" text="Titlu" />
+         <TableColumn prefWidth="104.0" style="-fx-background-color: #77d915;" text="Autor" />
+         <TableColumn prefWidth="82.0" style="-fx-background-color: #77d915;" text="Status" />
+         <TableColumn prefWidth="155.0" style="-fx-background-color: #77d915;" text="Data imprumutului" />
+      </columns>
+   </TableView>
+   <Label layoutX="454.0" layoutY="71.0" text="Carti imprumutate:" />
+   <TextField layoutX="465.0" layoutY="581.0" style="-fx-background-color: #77d915;" />
+   <Label layoutX="519.0" layoutY="555.0" text="Numar imprumut:" />
+   <Button layoutX="540.0" layoutY="616.0" mnemonicParsing="false" style="-fx-background-color: #1e90ff;" text="Returneaza" />
+   <DatePicker layoutX="724.0" layoutY="579.0" prefHeight="25.0" prefWidth="116.0" />
+   <Label layoutX="726.0" layoutY="555.0" text="Interval imprumuturi:" />
+   <Label layoutX="683.0" layoutY="583.0" text="Start:" />
+   <DatePicker layoutX="724.0" layoutY="614.0" prefHeight="25.0" prefWidth="116.0" />
+   <Label layoutX="686.0" layoutY="618.0" text="End:" />
+   <Button layoutX="782.0" layoutY="648.0" mnemonicParsing="false" style="-fx-background-color: #1e90ff;" text="Filtreaza" />
+   <Label layoutX="914.0" layoutY="529.0" text="CNP:" />
+   <Label layoutX="971.0" layoutY="508.0" text="Inregistrare cititor nou:" />
+   <TextField layoutX="947.0" layoutY="525.0" />
+   <Label layoutX="905.0" layoutY="563.0" text="Nume:" />
+   <TextField layoutX="947.0" layoutY="557.0" />
+   <Label layoutX="902.0" layoutY="590.0" text="Adresa:" />
+   <TextField layoutX="947.0" layoutY="586.0" />
+   <Label layoutX="901.0" layoutY="620.0" text="Telefon:" />
+   <TextField layoutX="947.0" layoutY="616.0" />
+   <Label layoutX="886.0" layoutY="652.0" text="Username:" />
+   <TextField layoutX="947.0" layoutY="648.0" />
+   <Label layoutX="904.0" layoutY="685.0" text="Parola:" />
+   <TextField layoutX="947.0" layoutY="681.0" />
+   <Button layoutX="1012.0" layoutY="720.0" mnemonicParsing="false" style="-fx-background-color: #1e90ff;" text="Inregistreaza" />
+</AnchorPane>
