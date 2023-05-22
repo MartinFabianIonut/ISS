@@ -55,8 +55,8 @@ public class LibrarianController implements Initializable, IObserver {
     }
 
     private void showAllBooks() throws MyException {
-        List<Book> showDTOS = (List<Book>) this.service.getAllBooks();
-        bookObservableList = FXCollections.observableArrayList(showDTOS);
+        List<Book> allBooks = (List<Book>) this.service.getAllBooks();
+        bookObservableList = FXCollections.observableArrayList(allBooks);
         allBooksTableView.setItems(bookObservableList);
         allBooksTableView.refresh();
     }

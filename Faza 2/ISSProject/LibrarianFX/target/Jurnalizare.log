@@ -1108,3 +1108,20 @@
 07 May 2023 21:33:54,529 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 50 closeConnection - Closed connection
 07 May 2023 21:33:54,529 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 213 logoutReader - Logged out
 07 May 2023 21:33:54,529 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy$ReaderThread 234 run - Socket closed: java.net.SocketException: Socket closed
+08 May 2023 15:47:57,554 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 37 <init> - Creating proxy
+08 May 2023 15:48:06,807 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 87 initializeConnection - Connection initialized
+08 May 2023 15:48:06,818 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 60 sendRequest - Request sent: Request{type='LOGIN_READER', data='Reader{CNP='null', name='null', address='null', phoneNumber='null', username='ana', password='1234'}'}
+08 May 2023 15:48:07,087 DEBUG org.jboss.logging.LoggerProviders 158 logProvider - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+08 May 2023 15:48:07,093 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy$ReaderThread 222 run - response received Response{type='OK', data='Reader{CNP='123', name='ana', address='str', phoneNumber='21', username='ana', password='1234'}'}
+08 May 2023 15:48:07,093 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 71 readResponse - Response received: Response{type='OK', data='Reader{CNP='123', name='ana', address='str', phoneNumber='21', username='ana', password='1234'}'}
+08 May 2023 15:48:07,094 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 123 authenticateReader - Logged in
+08 May 2023 15:48:07,178 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 60 sendRequest - Request sent: Request{type='GET_ALL_BOOKS', data='null'}
+08 May 2023 15:48:08,093 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy$ReaderThread 222 run - response received Response{type='GET_ALL_BOOKS', data='[Ion by Liviu Rebreanu with status AVAILABLE, Maitreyi by Mircea Eliade with status AVAILABLE, Nostalgia by Mircea Cartarescu with status BORROWED]'}
+08 May 2023 15:48:08,093 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 71 readResponse - Response received: Response{type='GET_ALL_BOOKS', data='[Ion by Liviu Rebreanu with status AVAILABLE, Maitreyi by Mircea Eliade with status AVAILABLE, Nostalgia by Mircea Cartarescu with status BORROWED]'}
+08 May 2023 15:48:08,093 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 182 getAllBooks - Got shows
+08 May 2023 15:48:12,551 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 60 sendRequest - Request sent: Request{type='LOGOUT_READER', data='Reader{CNP='123', name='ana', address='str', phoneNumber='21', username='ana', password='1234'}'}
+08 May 2023 15:48:12,553 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy$ReaderThread 222 run - response received Response{type='OK', data='null'}
+08 May 2023 15:48:12,553 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 71 readResponse - Response received: Response{type='OK', data='null'}
+08 May 2023 15:48:12,555 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 50 closeConnection - Closed connection
+08 May 2023 15:48:12,555 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy 213 logoutReader - Logged out
+08 May 2023 15:48:12,555 INFO  ISSProject.network.rpcprotocol.ServicesRpcProxy$ReaderThread 234 run - Socket closed: java.net.SocketException: Socket closed
