@@ -1,0 +1,8 @@
+rootProject.name = 'ISSProject'
+include 'Domain'
+include 'LibrarianFX'
+include 'Networking'
+include 'Persistence'
+include 'ServerRPC'
+include 'Services'
+
