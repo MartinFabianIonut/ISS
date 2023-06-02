@@ -20,8 +20,7 @@ public class RpcConcurrentServer extends AbsConcurrentServer {
     @Override
     protected Thread createWorker(Socket client) {
         ClientRpcReflectionWorker worker=new ClientRpcReflectionWorker(chatServer, client);
-        Thread tw=new Thread(worker);
-        return tw;
+        return new Thread(worker);
     }
 
     @Override

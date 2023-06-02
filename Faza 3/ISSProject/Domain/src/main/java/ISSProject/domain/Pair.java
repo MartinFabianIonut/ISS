@@ -1,8 +1,8 @@
 package ISSProject.domain;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class Pair {
+public class Pair implements Serializable {
     public Reader reader;
     public Book book;
     public Pair(Reader reader, Book book) {

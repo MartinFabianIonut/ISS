@@ -8,11 +8,11 @@ import ISSProject.network.utils.ServerException;
 import ISSProject.persistance.repository.ILibrarianRepository;
 import ISSProject.persistance.repository.IReaderRepository;
 import ISSProject.persistance.repository.IBookRepository;
-import ISSProject.persistance.repository.IBookLoansRepository;
+import ISSProject.persistance.repository.IBookLoanRepository;
 import ISSProject.persistance.repository.jdbc.LibrarianDBIRepository;
 import ISSProject.persistance.repository.jdbc.ReaderDBIRepository;
 import ISSProject.persistance.repository.jdbc.BookDBIRepository;
-import ISSProject.persistance.repository.jdbc.BookLoansDBIRepository;
+import ISSProject.persistance.repository.jdbc.BookLoanDBIRepository;
 import ISSProject.server.ServicesImpl;
 import ISSProject.service.IService;
 
@@ -23,7 +23,6 @@ public class StartRpcServer {
     private static int defaultPort=55555;
 
     public static void main(String[] args) {
-        // UserRepository userRepo=new UserRepositoryMock();
         Properties serverProps=new Properties();
         try {
             serverProps.load(StartRpcServer.class.getResourceAsStream("/server.properties"));
@@ -36,7 +35,7 @@ public class StartRpcServer {
         ILibrarianRepository<Integer, Librarian> librarianDBIRepository = new LibrarianDBIRepository();
         IReaderRepository<Integer, Reader> readerDBIRepository = new ReaderDBIRepository();
         IBookRepository<Integer, Book> bookDBIRepository = new BookDBIRepository();
-        IBookLoansRepository<Integer, BookLoan> bookLoansDBIRepository = new BookLoansDBIRepository();
+        IBookLoanRepository<Integer, BookLoan> bookLoansDBIRepository = new BookLoanDBIRepository();
         IService serverImpl=new ServicesImpl(bookDBIRepository, bookLoansDBIRepository,readerDBIRepository,librarianDBIRepository);
 
         int serverPort=defaultPort;

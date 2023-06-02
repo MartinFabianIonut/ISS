@@ -1,5 +1,6 @@
 package ISSProject.controller;
 
+import ISSProject.HelloApplication;
 import ISSProject.domain.*;
 import ISSProject.service.IObserver;
 import ISSProject.service.IService;
@@ -11,8 +12,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -23,10 +26,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LibrarianController implements Initializable, IObserver {
-
     private Librarian librarian;
     private IService service;
     private Stage loginStage;
+    private ManagementController managementController;
 
     @FXML
     TableView<Book> allBooksTableView;
@@ -35,13 +38,13 @@ public class LibrarianController implements Initializable, IObserver {
     ObservableList<Book> bookObservableList;
     ObservableList<BookLoan> borrowedBookObservableList;
     @FXML
-    TableColumn<Book, String> returned;
+    TableColumn<BookLoan, String> returned;
 
     @FXML
-    Button returnButton, registerButton;
+    Button registerButton, managementButton;
 
     @FXML
-    TextField loadIdTextField, CNPTextField, NumeTextField, AdresaTextField, TelefonTextField, UsernameTextField, PasswordTextField;
+    TextField CNPTextField, NumeTextField, AdresaTextField, TelefonTextField, UsernameTextField, PasswordTextField;
 
 
     public LibrarianController() {
@@ -71,19 +74,19 @@ public class LibrarianController implements Initializable, IObserver {
         allBooksTableView.refresh();
     }
 
-    private void showAllBookLoans() throws MyException {
+    private void showBorrowedBooks() throws MyException {
         List<BookLoan> allBookLoans = (List<BookLoan>) this.service.getAllBookLoans();
         allBookLoans = allBookLoans.stream().filter(bookLoan -> bookLoan.getStatus() == Status.STILL_BORROWED).toList();
-        ObservableList<BookLoan> bookLoanObservableList = FXCollections.observableArrayList(allBookLoans);
-        borrowedBooksTableView.setItems(bookLoanObservableList);
+        borrowedBookObservableList = FXCollections.observableArrayList(allBookLoans);
+        borrowedBooksTableView.setItems(borrowedBookObservableList);
         borrowedBooksTableView.refresh();
     }
 
     private void initialiseTable() {
         returned.setCellFactory(new Callback<>() {
             @Override
-            public TableCell call(final TableColumn<Book, String> param) {
-                return new TableCell<Book, String>() {
+            public TableCell call(final TableColumn<BookLoan, String> param) {
+                return new TableCell<BookLoan, String>() {
                     final Button returnButton = new Button("Return");
 
                     @Override
@@ -92,9 +95,27 @@ public class LibrarianController implements Initializable, IObserver {
                         if (empty) {
                             setGraphic(null);
                             setText(null);
+                        } else {
+                            returnButton.setOnAction(event -> {
+                                BookLoan loan = getTableView().getItems().get(getIndex());
+                                try {
+                                    service.returnBook(librarian, loan.getId());
+                                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                    alert.setTitle("Success");
+                                    alert.setHeaderText("Success");
+                                    alert.setContentText("Book returned successfully");
+                                    alert.showAndWait();
+                                } catch (MyException e) {
+                                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setTitle("Error");
+                                    alert.setHeaderText("Error");
+                                    alert.setContentText(e.getMessage());
+                                    alert.showAndWait();
+                                }
+                            });
+                            setGraphic(returnButton);
+                            setText(null);
                         }
-                        setGraphic(returnButton);
-                        setText(null);
                     }
                 };
             }
@@ -103,33 +124,30 @@ public class LibrarianController implements Initializable, IObserver {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (librarian != null) {
-            try {
-                showAllBooks();
-            } catch (MyException e) {
-                throw new RuntimeException(e);
-            }
-            initialiseTable();
-        }
+        initialiseTable();
     }
 
     public void init() {
         try {
             showAllBooks();
+            showBorrowedBooks();
         } catch (MyException e) {
             throw new RuntimeException(e);
         }
-        initialiseTable();
     }
 
-     public void showBooks() {
+    public void showBooks() {
         Platform.runLater(() -> {
             try {
                 showAllBooks();
+                showBorrowedBooks();
             } catch (MyException e) {
                 throw new RuntimeException(e);
             }
         });
+        if(managementController != null) {
+            managementController.showBooks();
+        }
     }
 
     public void logout() {
@@ -147,33 +165,6 @@ public class LibrarianController implements Initializable, IObserver {
         stage.close();
     }
 
-    public void returnButtonAction(ActionEvent actionEvent) {
-        String loan_id = loadIdTextField.getText();
-        if(loan_id.equals("")){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Please enter a loan id");
-            alert.showAndWait();
-            return;
-        }
-        try {
-            service.returnBook(librarian, Integer.parseInt(loan_id));
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Success");
-            alert.setContentText("Book returned successfully");
-            alert.showAndWait();
-            loadIdTextField.setText("");
-        } catch (MyException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-        }
-    }
-
     public void registerButtonAction(ActionEvent actionEvent) {
         String CNP = CNPTextField.getText();
         String Nume = NumeTextField.getText();
@@ -181,7 +172,7 @@ public class LibrarianController implements Initializable, IObserver {
         String Telefon = TelefonTextField.getText();
         String Username = UsernameTextField.getText();
         String Password = PasswordTextField.getText();
-        if(CNP.equals("") || Nume.equals("") || Adresa.equals("") || Telefon.equals("") || Username.equals("") || Password.equals("")){
+        if (CNP.equals("") || Nume.equals("") || Adresa.equals("") || Telefon.equals("") || Username.equals("") || Password.equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error");
@@ -190,6 +181,15 @@ public class LibrarianController implements Initializable, IObserver {
             return;
         }
         try {
+            boolean exists = service.findByUsername(Username);
+            if (exists) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText("Username already exists");
+                alert.showAndWait();
+                return;
+            }
             service.registerReader(new Reader(0, CNP, Nume, Adresa, Telefon, Username, Password));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
@@ -208,6 +208,35 @@ public class LibrarianController implements Initializable, IObserver {
             alert.setHeaderText("Error");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
+        }
+    }
+
+    public void managementButtonAction(ActionEvent actionEvent) {
+        // open a new window
+        try {
+            FXMLLoader managementLoader = new FXMLLoader();
+            managementLoader.setLocation(HelloApplication.class.getResource("management.fxml"));
+            Stage managementStage = new Stage();
+            Scene managementScene;
+            try {
+                managementScene = new Scene(managementLoader.load(), 1200, 800);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            managementController = managementLoader.getController();
+            managementController.setService(service);
+            // set stage of librarian
+            managementController.setStage((Stage) CNPTextField.getScene().getWindow());
+            managementController.init();
+            managementStage.setTitle("Managementul bibliotecii");
+            managementStage.setScene(managementScene);
+            managementStage.show();
+            managementStage.setOnCloseRequest(event -> {
+                managementController = null;
+            });
+
+        } catch (MyException e) {
+            throw new RuntimeException(e);
         }
     }
 }

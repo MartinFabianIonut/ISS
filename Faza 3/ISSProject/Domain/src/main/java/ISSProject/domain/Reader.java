@@ -38,17 +38,6 @@ public class Reader extends Entity<Integer>implements Serializable {
         this.bookLoan = new ArrayList<>();
     }
 
-//    public Reader(Integer id, String CNP, String name, String address, String phoneNumber, String username, String password, List<BookLoan> bookLoan) {
-//        super(id);
-//        this.CNP = CNP;
-//        this.name = name;
-//        this.address = address;
-//        this.phoneNumber = phoneNumber;
-//        this.username = username;
-//        this.password = password;
-//        this.bookLoan = bookLoan;
-//    }
-
     public Reader(){}
 
     public List<BookLoan> getBookLoan() {
@@ -109,16 +98,8 @@ public class Reader extends Entity<Integer>implements Serializable {
 
     @Override
     public String toString() {
-        String s = "Reader{" +
-                "id=" + getId() +
-                "CNP='" + CNP + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", bookLoan=" + bookLoan +
-                '}';
-        return s;
+        if (name == null)
+            return "null";
+        return name.toUpperCase();
     }
 }

@@ -36,14 +36,11 @@ public class ReaderController implements Initializable, IObserver {
     TableView<Book> allBooksTableView;
     @FXML
     TableView<BookLoan> borrowedBooksTableView;
-
     ObservableList<Book> bookObservableList;
     ObservableList<BookLoan> borrowedBookObservableList;
     @FXML
     TableColumn<Book, String> loan;
 
-    @FXML
-    Button seeBorrowedBooksButton;
 
 
     public ReaderController() {
@@ -67,11 +64,16 @@ public class ReaderController implements Initializable, IObserver {
 
     private void showAllBooks() throws MyException {
         List<Book> allBooks = (List<Book>) this.service.getAllBooks();
-        // stream only the books that are not borrowed by the current reader
         allBooks = allBooks.stream().filter(book -> book.getStatus() == Status.AVAILABLE).toList();
         bookObservableList = FXCollections.observableArrayList(allBooks);
         allBooksTableView.setItems(bookObservableList);
         allBooksTableView.refresh();
+
+        List<BookLoan> borrowedBooks = (List<BookLoan>) service.getAllBookLoans();
+        borrowedBooks = borrowedBooks.stream().filter(bookLoan -> Objects.equals(bookLoan.getReader().getId(), reader.getId())).toList();
+        borrowedBookObservableList = FXCollections.observableArrayList(borrowedBooks);
+        borrowedBooksTableView.setItems(borrowedBookObservableList);
+        borrowedBooksTableView.refresh();
     }
 
     private void initialiseTable() {
@@ -90,6 +92,7 @@ public class ReaderController implements Initializable, IObserver {
                         } else {
                             loanButton.setOnAction(event -> {
                                 Book book = getTableView().getItems().get(getIndex());
+                                book.setStatus(Status.BORROWED);
                                 try {
                                     service.loanBook(reader, book);
                                     showAllBooks();
@@ -97,25 +100,13 @@ public class ReaderController implements Initializable, IObserver {
                                     System.out.println("Loan error " + e);
                                 }
                             });
+                            setGraphic(loanButton);
+                            setText(null);
                         }
-                        setGraphic(loanButton);
-                        setText(null);
                     }
                 };
             }
         });
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        if (reader != null) {
-            try {
-                showAllBooks();
-            } catch (MyException e) {
-                throw new RuntimeException(e);
-            }
-            initialiseTable();
-        }
     }
 
     public void init() {
@@ -124,14 +115,12 @@ public class ReaderController implements Initializable, IObserver {
         } catch (MyException e) {
             throw new RuntimeException(e);
         }
-        initialiseTable();
     }
 
     public void showBooks() {
         Platform.runLater(() -> {
             try {
                 showAllBooks();
-                seeBorrowedBooksButtonAction(new ActionEvent());
             } catch (MyException e) {
                 throw new RuntimeException(e);
             }
@@ -153,11 +142,8 @@ public class ReaderController implements Initializable, IObserver {
         stage.close();
     }
 
-    public void seeBorrowedBooksButtonAction(ActionEvent actionEvent) throws MyException {
-        List<BookLoan> borrowedBooks = (List<BookLoan>) service.getAllBookLoans();
-        borrowedBooks = borrowedBooks.stream().filter(bookLoan -> Objects.equals(bookLoan.getReader().getId(), reader.getId())).toList();
-        borrowedBookObservableList = FXCollections.observableArrayList(borrowedBooks);
-        borrowedBooksTableView.setItems(borrowedBookObservableList);
-        borrowedBooksTableView.refresh();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        initialiseTable();
     }
 }

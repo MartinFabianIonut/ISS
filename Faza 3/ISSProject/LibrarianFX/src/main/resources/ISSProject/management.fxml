@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #bfff80;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ISSProject.controller.ManagementController">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="788.0" layoutX="7.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="1186.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfff80" height="768.0" layoutX="17.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+   <Label layoutX="70.0" layoutY="71.0" text="Carti inregistrate:" />
+   <Label fx:id="controlLabel" layoutX="572.0" layoutY="468.0" />
+   <TableView fx:id="allBooksTableView" layoutX="70.0" layoutY="107.0" prefHeight="607.0" prefWidth="658.0" style="-fx-background-color: #1e90ff; -fx-text-inner-color: #000000; -fx-text-fill: #000000;">
+     <columns>
+       <TableColumn fx:id="id"
+               prefWidth="68.0" style="-fx-background-color: #77d915;" text="Cod carte">
+         <cellValueFactory>
+             <PropertyValueFactory property="id" />
+         </cellValueFactory>
+       </TableColumn>
+         <TableColumn fx:id="title" onEditCommit="#onEditCommitTitle"
+                 prefWidth="259.0" style="-fx-background-color: #77d915;" text="Titlu">
+         <cellValueFactory>
+             <PropertyValueFactory property="title" />
+         </cellValueFactory>
+         </TableColumn>
+       <TableColumn fx:id="author" onEditCommit="#onEditCommitAuthor"
+               prefWidth="129.0" style="-fx-background-color: #77d915;" text="Autor">
+         <cellValueFactory>
+             <PropertyValueFactory property="author" />
+         </cellValueFactory>
+         </TableColumn>
+         <TableColumn fx:id="actionForDeleteOrUpdate" prefWidth="201.0" style="-fx-background-color: #77d915;" text="Actiune" />
+     </columns>
+   </TableView>
+   <Label layoutX="759.0" layoutY="71.0" text="Inregistrare carte:" />
+   <TextField fx:id="titlu" layoutX="912.0" layoutY="107.0" />
+   <TextField fx:id="autor" layoutX="912.0" layoutY="155.0" />
+   <Label layoutX="869.0" layoutY="111.0" text="Titlu:" />
+   <Label layoutX="862.0" layoutY="159.0" text="Autor:" />
+   <Button fx:id="addBookButton" layoutX="971.0" layoutY="210.0" mnemonicParsing="false" onAction="#addBookButtonAction" style="-fx-background-color: #1e90ff;" text="Adauga carte!" />
+</AnchorPane>

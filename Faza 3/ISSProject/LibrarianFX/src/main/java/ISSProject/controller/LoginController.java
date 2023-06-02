@@ -17,9 +17,9 @@ import java.io.IOException;
 
 public class LoginController {
     @FXML
-    TextField usernameField, verifyField;
+    TextField usernameField;
     @FXML
-    PasswordField passwordField;
+    PasswordField passwordField,verifyField;
     @FXML
     Button loginButton, verifyButton;
     @FXML
@@ -63,7 +63,7 @@ public class LoginController {
     }
 
     @FXML
-    private void loginAction(ActionEvent actionEvent) throws IOException {
+    private void loginAction(ActionEvent actionEvent) {
         if (usernameField.getText().length() > 0 && passwordField.getText().length() > 0 && comboType.getValue() != null) {
             try {
                 if (comboType.getSelectionModel().getSelectedItem().equals("Reader")) {
@@ -72,7 +72,7 @@ public class LoginController {
                     Reader reader = service.authenticateReader(trying, readerController);
                     if (reader != null) {
                         stage.setOnCloseRequest(event -> {
-                            readerController.logout();
+                            readerController.logoutAction();
                         });
                         stage.setTitle("Reader: " + reader);
                         if (stage.getScene() == null)
@@ -107,7 +107,7 @@ public class LoginController {
             boolean isOk = service.security(Integer.parseInt(verifyField.getText()));
             if (librarian != null && isOk) {
                 stage.setOnCloseRequest(event -> {
-                    librarianController.logout();
+                    librarianController.logoutAction();
                 });
                 stage.setTitle("Librarian: " + librarian);
                 if (stage.getScene() == null)
@@ -121,7 +121,12 @@ public class LoginController {
             } else
                 controlLabel.setText("Error: no such librarian or wrong key!");
         } catch (IllegalArgumentException | MyException e) {
-            controlLabel.setText("Error!");
+            controlLabel.setText("Error: " + e.getMessage() + "!");
         }
+        usernameField.clear();
+        passwordField.clear();
+        verifyField.clear();
+        comboType.getSelectionModel().clearSelection();
+        securityPane.setVisible(false);
     }
 }

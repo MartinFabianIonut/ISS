@@ -1,6 +1,5 @@
 package ISSProject.persistance.repository.jdbc;
 
-import ISSProject.domain.Librarian;
 import ISSProject.domain.Reader;
 import ISSProject.persistance.repository.IReaderRepository;
 
@@ -13,24 +12,19 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class ReaderDBIRepository implements IReaderRepository<Integer, Reader> {
+    private static final Logger logger = LogManager.getLogger();
+    private static SessionFactory sessionFactory;
 
-    private  static SessionFactory sessionFactory;
-    public ReaderDBIRepository(){
+    public ReaderDBIRepository() {
         initialize();
     }
+
     public void initialize() {
-        // A SessionFactory is set up once for an application!
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml
+                .configure()
                 .build();
         try {
             sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
@@ -39,143 +33,160 @@ public class ReaderDBIRepository implements IReaderRepository<Integer, Reader> {
             StandardServiceRegistryBuilder.destroy(registry);
         }
     }
-    private static final Logger logger= LogManager.getLogger();
 
     @Override
     public Reader findById(Integer id) {
-        logger.traceEntry("find a show by id");
-        try(Session session=sessionFactory.openSession()){
-            Transaction transaction=null;
+        logger.traceEntry("find a reader by id");
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = null;
             try {
-                transaction=session.beginTransaction();
-                Reader book=session.createQuery("from Reader where id=:id",Reader.class)
-                        .setParameter("id",id)
+                transaction = session.beginTransaction();
+                Reader reader = session.createQuery("from Reader where id=:id", Reader.class)
+                        .setParameter("id", id)
                         .setMaxResults(1)
                         .uniqueResult();
                 transaction.commit();
-                logger.traceExit(book);
-                return book;
-            }
-            catch (RuntimeException ex){
-                if(transaction!=null)
+                logger.traceExit(reader);
+                return reader;
+            } catch (RuntimeException ex) {
+                if (transaction != null)
                     transaction.rollback();
-                logger.error("ERROR for insert in BookDBIRepository: " + ex);
+                logger.error("ERROR for insert in ReaderDBIRepository: " + ex);
             }
-
         }
+        logger.traceExit("no reader found with id {}", id);
         return null;
     }
 
     @Override
     public Iterable<Reader> getAll() {
-        logger.traceEntry("find all books");
-        try(Session session=sessionFactory.openSession()){
-            Transaction transaction=null;
-            try{
-                transaction=session.beginTransaction();
-                List<Reader> books=session.createQuery("from Reader",Reader.class)
+        logger.traceEntry("find all readers");
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = null;
+            try {
+                transaction = session.beginTransaction();
+                List<Reader> readers = session.createQuery("from Reader", Reader.class)
                         .list();
                 transaction.commit();
-                logger.traceExit(books);
-                return books;
-            }
-            catch (RuntimeException ex){
-                if(transaction!=null)
+                logger.traceExit(readers);
+                return readers;
+            } catch (RuntimeException ex) {
+                if (transaction != null)
                     transaction.rollback();
-                logger.error("ERROR for insert in BookDBIRepository: " + ex);
+                logger.error("ERROR for insert in ReaderDBIRepository: " + ex);
             }
         }
+        logger.traceExit("no reader found");
         return null;
     }
 
     @Override
-    public boolean add(Reader book) {
-        try(Session session=sessionFactory.openSession()){
-            Transaction transaction=null;
-            try{
-                transaction=session.beginTransaction();
-                session.save(book);
+    public void add(Reader reader) {
+        logger.traceEntry("add reader {}", reader);
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = null;
+            try {
+                transaction = session.beginTransaction();
+                session.save(reader);
                 transaction.commit();
-                logger.trace("saved {} instance", book);
-            }
-            catch (RuntimeException ex){
-                if(transaction!=null)
+                logger.trace("saved {} instance", reader);
+            } catch (RuntimeException ex) {
+                if (transaction != null)
                     transaction.rollback();
-                logger.error("ERROR for insert in BookDBIRepository: " + ex);
+                logger.error("ERROR for insert in ReaderDBIRepository: " + ex);
             }
         }
-        logger.traceExit("inserted successfully");
-        return true;
+        logger.traceExit("reader inserted successfully");
     }
 
 
-
     @Override
-    public boolean delete(Integer id) {
-        logger.traceEntry("delete ticket");
-        try(Session session = sessionFactory.openSession()){
-            Transaction tx=null;
-            try{
+    public void delete(Integer id) {
+        logger.traceEntry("delete reader");
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = null;
+            try {
                 tx = session.beginTransaction();
                 String hql = "from Reader where id=:id";
-                Reader book = session.createQuery(hql, Reader.class)
+                Reader reader = session.createQuery(hql, Reader.class)
                         .setParameter("id", id)
                         .setMaxResults(1)
                         .uniqueResult();
-                System.out.println("Stergem mesajul "+book.getId());
-                session.delete(book);
+                session.delete(reader);
                 tx.commit();
-                logger.traceExit("deleted successfully");
-                return true;
-            } catch(RuntimeException ex){
-                if (tx!=null)
+                logger.traceExit("reader deleted successfully");
+            } catch (RuntimeException ex) {
+                if (tx != null)
                     tx.rollback();
-                logger.error("ERROR for delete in BookDBIRepository: " + ex);
+                logger.error("ERROR for delete in ReaderDBIRepository: " + ex);
             }
         }
-        return false;
     }
 
     @Override
-    public boolean update(Reader show) {
-        logger.traceEntry("updating ticket");
-        try(Session session = sessionFactory.openSession()){
-            Transaction tx=null;
-            try{
+    public void update(Reader reader) {
+        logger.traceEntry("updating reader");
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = null;
+            try {
                 tx = session.beginTransaction();
-                session.update(show);
+                session.update(reader);
                 tx.commit();
-                logger.traceExit("updated successfully");
-                return true;
-            } catch(RuntimeException ex){
-                if (tx!=null)
+                logger.traceExit("reader updated successfully");
+            } catch (RuntimeException ex) {
+                if (tx != null)
                     tx.rollback();
-                logger.error("ERROR for update in BookDBIRepository: " + ex);
+                logger.error("ERROR for update in ReaderDBIRepository: " + ex);
             }
         }
-        return true;
     }
 
     @Override
     public Reader authenticateReader(String username, String password) {
-        try(Session session=sessionFactory.openSession()){
-            Transaction tx=null;
-            System.out.println("Session: "+session);
-            try{
-                tx=session.beginTransaction();
-                Reader employee=session.createQuery("from Reader where username=:username and password=:password",Reader.class)
-                        .setParameter("username",username)
-                        .setParameter("password",password)
+        logger.traceEntry("authenticating reader");
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = null;
+            System.out.println("Session: " + session);
+            try {
+                tx = session.beginTransaction();
+                Reader reader = session.createQuery("from Reader where username=:username and password=:password", Reader.class)
+                        .setParameter("username", username)
+                        .setParameter("password", password)
                         .setMaxResults(1)
                         .uniqueResult();
                 tx.commit();
-                return employee;
-            }
-            catch (RuntimeException ex){
-                if(tx!=null)
+                logger.traceExit(reader);
+                return reader;
+            } catch (RuntimeException ex) {
+                if (tx != null)
                     tx.rollback();
             }
         }
+        logger.traceExit("no reader found");
         return null;
+    }
+
+    @Override
+    public boolean findByUsername(String username) {
+        logger.traceEntry("find a reader by username");
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = null;
+            try {
+                transaction = session.beginTransaction();
+                Reader reader = session.createQuery("from Reader where username=:username", Reader.class)
+                        .setParameter("username", username)
+                        .setMaxResults(1)
+                        .uniqueResult();
+                transaction.commit();
+                logger.traceExit(reader);
+                return true;
+            } catch (RuntimeException ex) {
+                if (transaction != null)
+                    transaction.rollback();
+                logger.error("ERROR for finding reader by username in ReaderDBIRepository: " + ex);
+            }
+        }
+        logger.traceExit("no reader found with username {}", username);
+        return false;
     }
 }

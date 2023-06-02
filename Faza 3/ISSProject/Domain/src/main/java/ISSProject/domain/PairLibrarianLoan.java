@@ -1,6 +1,8 @@
 package ISSProject.domain;
 
-public class PairLibrarianLoan {
+import java.io.Serializable;
+
+public class PairLibrarianLoan  implements Serializable {
     public Librarian librarian;
     public Integer loan;
     public PairLibrarianLoan(Librarian librarian, Integer loan) {

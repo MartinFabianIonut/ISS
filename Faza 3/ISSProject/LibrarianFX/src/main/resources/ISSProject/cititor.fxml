@@ -33,14 +33,33 @@
          <TableColumn fx:id="loan" prefWidth="93.0" style="-fx-background-color: #77d915;" text="Imprumuta!" />
      </columns>
    </TableView>
-   <TableView layoutX="533.0" layoutY="107.0" prefHeight="607.0" prefWidth="618.0" style="-fx-background-color: #1e90ff;">
+   <TableView fx:id="borrowedBooksTableView" layoutX="533.0" layoutY="107.0" prefHeight="607.0" prefWidth="618.0" style="-fx-background-color: #1e90ff; -fx-text-fill: #000000; -fx-text-inner-color: #000000;">
       <columns>
-         <TableColumn prefWidth="106.0" style="-fx-background-color: #77d915;" text="Numar imprumut" />
-         <TableColumn prefWidth="161.0" style="-fx-background-color: #77d915;" text="Titlu" />
-         <TableColumn prefWidth="90.0" style="-fx-background-color: #77d915;" text="Autor" />
-         <TableColumn prefWidth="98.0" style="-fx-background-color: #77d915;" text="Status" />
-         <TableColumn prefWidth="162.0" style="-fx-background-color: #77d915;" text="Data imprumutului" />
+         <TableColumn prefWidth="106.0" style="-fx-background-color: #77d915;" text="Numar imprumut">
+          <cellValueFactory>
+              <PropertyValueFactory property="id" />
+          </cellValueFactory>
+            </TableColumn>
+         <TableColumn prefWidth="100.0" style="-fx-background-color: #77d915;" text="Ziua imprumut">
+             <cellValueFactory>
+                 <PropertyValueFactory property="dayOfLoan" />
+             </cellValueFactory>
+         </TableColumn>
+         <TableColumn prefWidth="92.0" style="-fx-background-color: #77d915;" text="Deadline">
+             <cellValueFactory>
+                 <PropertyValueFactory property="deadline" />
+             </cellValueFactory>
+         </TableColumn>
+         <TableColumn prefWidth="98.0" style="-fx-background-color: #77d915;" text="Status">
+             <cellValueFactory>
+                 <PropertyValueFactory property="status" />
+             </cellValueFactory>
+         </TableColumn>
+         <TableColumn prefWidth="221.0" style="-fx-background-color: #77d915;" text="Carte">
+             <cellValueFactory>
+                 <PropertyValueFactory property="book" />
+             </cellValueFactory>
+         </TableColumn>
       </columns>
    </TableView>
-   <Button fx:id="seeBorrowedBooksButton" layoutX="533.0" layoutY="67.0" mnemonicParsing="false" onAction="#seeBorrowedBooksButtonAction" style="-fx-background-color: #77d915;" text="Vezi imprumuturile mele!" />
 </AnchorPane>

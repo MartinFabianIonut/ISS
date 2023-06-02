@@ -17,13 +17,13 @@
    <Label layoutX="532.0" layoutY="217.0" text="Password:" />
    <Button fx:id="loginButton" layoutX="574.0" layoutY="335.0" mnemonicParsing="false" onAction="#loginAction" style="-fx-background-color: #1e90ff;" text="Login!" />
    <PasswordField fx:id="passwordField" layoutX="600.0" layoutY="213.0" style="-fx-background-color: #77d915;" />
-   <Label fx:id="controlLabel" layoutX="577.0" layoutY="716.0" prefHeight="17.0" prefWidth="49.0" />
+   <Label fx:id="controlLabel" layoutX="187.0" layoutY="716.0" prefHeight="17.0" prefWidth="868.0" />
    <ComboBox fx:id="comboType" layoutX="600.0" layoutY="107.0" prefWidth="150.0" style="-fx-background-color: #77d915;" />
    <AnchorPane fx:id="securityPane" layoutX="485.0" layoutY="434.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #77d915;">
       <children>
          <Label layoutX="67.0" layoutY="39.0" text="Security key:" />
-         <TextField fx:id="verifyField" layoutX="26.0" layoutY="75.0" style="-fx-background-color: #bfff80;" />
          <Button fx:id="verifyButton" layoutX="75.0" layoutY="142.0" mnemonicParsing="false" onAction="#verifyAction" style="-fx-background-color: #bfff80;" text="Verify!" />
+         <PasswordField fx:id="verifyField" layoutX="26.0" layoutY="88.0" style="-fx-background-color: #bfff80;" />
       </children>
    </AnchorPane>
 </AnchorPane>

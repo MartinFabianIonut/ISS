@@ -2326,7 +2326,7 @@
 									"visible": false,
 									"fillColor": "#77d915",
 									"font": "Arial;13;0",
-									"left": 160,
+									"left": 224,
 									"top": 64,
 									"width": 10,
 									"height": 10
@@ -2343,7 +2343,7 @@
 									"visible": false,
 									"fillColor": "#77d915",
 									"font": "Arial;13;0",
-									"left": 160,
+									"left": 224,
 									"top": 64,
 									"width": 10,
 									"height": 10
@@ -2360,7 +2360,7 @@
 									"visible": false,
 									"fillColor": "#77d915",
 									"font": "Arial;13;0",
-									"left": 160,
+									"left": 224,
 									"top": 64,
 									"width": 10,
 									"height": 10
@@ -2377,7 +2377,7 @@
 									"visible": false,
 									"fillColor": "#77d915",
 									"font": "Arial;13;0",
-									"left": 160,
+									"left": 224,
 									"top": 64,
 									"width": 10,
 									"height": 10
@@ -2394,7 +2394,7 @@
 									"visible": false,
 									"fillColor": "#77d915",
 									"font": "Arial;13;0",
-									"left": 160,
+									"left": 224,
 									"top": 64,
 									"width": 10,
 									"height": 10
@@ -5618,8 +5618,8 @@
 									"visible": false,
 									"fillColor": "#bfff80",
 									"font": "Arial;13;0",
-									"left": -40,
-									"top": -16,
+									"left": 8,
+									"top": -24,
 									"width": 10,
 									"height": 10
 								},
@@ -5635,8 +5635,8 @@
 									"visible": false,
 									"fillColor": "#bfff80",
 									"font": "Arial;13;0",
-									"left": -40,
-									"top": -16,
+									"left": 8,
+									"top": -24,
 									"width": 10,
 									"height": 10
 								},
@@ -5652,8 +5652,8 @@
 									"visible": false,
 									"fillColor": "#bfff80",
 									"font": "Arial;13;0",
-									"left": -40,
-									"top": -16,
+									"left": 8,
+									"top": -24,
 									"width": 10,
 									"height": 10
 								},
@@ -5669,8 +5669,8 @@
 									"visible": false,
 									"fillColor": "#bfff80",
 									"font": "Arial;13;0",
-									"left": -40,
-									"top": -16,
+									"left": 8,
+									"top": -24,
 									"width": 10,
 									"height": 10
 								},
@@ -5686,8 +5686,8 @@
 									"visible": false,
 									"fillColor": "#bfff80",
 									"font": "Arial;13;0",
-									"left": -40,
-									"top": -16,
+									"left": 8,
+									"top": -24,
 									"width": 10,
 									"height": 10
 								}

@@ -53,6 +53,6 @@ public class Librarian extends Entity<Integer>implements Serializable {
 
     @Override
     public String toString() {
-        return username + " " + password;
+        return username.toUpperCase();
     }
 }

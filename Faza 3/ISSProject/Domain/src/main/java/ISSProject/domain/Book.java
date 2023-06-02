@@ -65,6 +65,6 @@ public class Book extends Entity<Integer> implements Serializable {
 
     @Override
     public String toString() {
-        return title + " by " + author + " with status " + status;
+        return title + ",de " + author + "; status: " + status;
     }
 }

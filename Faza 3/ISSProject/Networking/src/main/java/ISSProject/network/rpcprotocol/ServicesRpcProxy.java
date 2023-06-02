@@ -95,13 +95,11 @@ public class ServicesRpcProxy implements IService {
     }
 
     private void handleUpdate(Response response) {
-        if(response.type() == ResponseType.LOAN_BOOK || response.type() == ResponseType.RETURN_BOOK){
-            employeeObserver.showBooks();
-        }
+        employeeObserver.showBooks();
     }
 
     private boolean isUpdate(Response response) {
-        return response.type() == ResponseType.LOAN_BOOK || response.type() == ResponseType.RETURN_BOOK;
+        return response.type() == ResponseType.MANAGEMENT;
     }
 
     @Override
@@ -261,6 +259,65 @@ public class ServicesRpcProxy implements IService {
             logger.info("Got book loans");
         }
         return (List<BookLoan>) response.data();
+    }
+
+    @Override
+    public boolean findByUsername(String username) throws MyException {
+        Request req = new Request.Builder().type(RequestType.FIND_BY_USERNAME).data(username).build();
+        sendRequest(req);
+        Response response = readResponse();
+        if (response.type() == ResponseType.OK) {
+            logger.info("Found username");
+            return true;
+        }
+        if (response.type() == ResponseType.ERROR) {
+            logger.error("Error finding username" + response.data().toString());
+            String err = response.data().toString();
+            throw new MyException(err);
+        }
+        return false;
+    }
+
+    @Override
+    public void deleteBook(Book book) throws MyException {
+        Request req = new Request.Builder().type(RequestType.DELETE_BOOK).data(book).build();
+        sendRequest(req);
+        Response response = readResponse();
+        if (response.type() == ResponseType.ERROR) {
+            logger.error("Error deleting book" + response.data().toString());
+            String err = response.data().toString();
+            throw new MyException(err);
+        } else {
+            logger.info("Deleted book");
+        }
+    }
+
+    @Override
+    public void updateBook(Book book) throws MyException {
+        Request req = new Request.Builder().type(RequestType.UPDATE_BOOK).data(book).build();
+        sendRequest(req);
+        Response response = readResponse();
+        if (response.type() == ResponseType.ERROR) {
+            logger.error("Error updating book" + response.data().toString());
+            String err = response.data().toString();
+            throw new MyException(err);
+        } else {
+            logger.info("Updated book");
+        }
+    }
+
+    @Override
+    public void addBook(Book book) throws MyException {
+        Request req = new Request.Builder().type(RequestType.ADD_BOOK).data(book).build();
+        sendRequest(req);
+        Response response = readResponse();
+        if (response.type() == ResponseType.ERROR) {
+            logger.error("Error adding book" + response.data().toString());
+            String err = response.data().toString();
+            throw new MyException(err);
+        } else {
+            logger.info("Added book");
+        }
     }
 
     private class ReaderThread implements Runnable {

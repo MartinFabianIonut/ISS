@@ -67,6 +67,7 @@ public class ClientRpcReflectionWorker implements Runnable, IObserver {
     }
 
     private static final Response okResponse=new Response.Builder().type(ResponseType.OK).build();
+    private static final Response managementResponse=new Response.Builder().type(ResponseType.MANAGEMENT).build();
     private Response handleRequest(Request request){
         Response response=null;
         String handlerName="handle"+(request).type();
@@ -195,6 +196,45 @@ public class ClientRpcReflectionWorker implements Runnable, IObserver {
         }
     }
 
+    private Response handleDELETE_BOOK(Request request){
+        logger.traceEntry("method entered: handleDELETE_BOOK with parameters "+request);
+        Book book = (Book) request.data();
+        try {
+            service.deleteBook(book);
+            logger.info("Book deleted");
+            return okResponse;
+        } catch (MyException e) {
+            logger.error("Error in worker (solving method handleDELETE_BOOK): "+e);
+            return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+        }
+    }
+
+    private Response handleADD_BOOK(Request request){
+        logger.traceEntry("method entered: handleADD_BOOK with parameters "+request);
+        Book book = (Book) request.data();
+        try {
+            service.addBook(book);
+            logger.info("Book added");
+            return okResponse;
+        } catch (MyException e) {
+            logger.error("Error in worker (solving method handleADD_BOOK): "+e);
+            return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+        }
+    }
+
+    private Response handleUPDATE_BOOK(Request request){
+        logger.traceEntry("method entered: handleUPDATE_BOOK with parameters "+request);
+        Book book = (Book) request.data();
+        try {
+            service.updateBook(book);
+            logger.info("Book updated");
+            return okResponse;
+        } catch (MyException e) {
+            logger.error("Error in worker (solving method handleUPDATE_BOOK): "+e);
+            return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+        }
+    }
+
     private Response handleREGISTER_READER(Request request){
         logger.traceEntry("method entered: handleREGISTER_READER with parameters "+request);
         Reader reader = (Reader) request.data();
@@ -229,9 +269,10 @@ public class ClientRpcReflectionWorker implements Runnable, IObserver {
 
     @Override
     public void showBooks() {
-        Response response = new Response.Builder().type(ResponseType.LOAN_BOOK).build();
+        Response response = new Response.Builder().type(ResponseType.MANAGEMENT).build();
         try {
             sendResponse(response);
+            logger.info("Books to show");
         } catch (IOException e) {
             logger.error(e);
         }

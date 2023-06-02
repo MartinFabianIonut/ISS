@@ -31,21 +31,35 @@
              <PropertyValueFactory property="author" />
           </cellValueFactory>
        </TableColumn>
+
      </columns>
    </TableView>
-   <TableView layoutX="454.0" layoutY="107.0" prefHeight="374.0" prefWidth="638.0" style="-fx-background-color: #1e90ff;">
+   <TableView fx:id="borrowedBooksTableView" layoutX="454.0" layoutY="107.0" prefHeight="374.0" prefWidth="638.0" style="-fx-background-color: #1e90ff;">
       <columns>
-         <TableColumn prefWidth="107.0" style="-fx-background-color: #77d915;" text="Numar imprumut" />
-         <TableColumn prefWidth="189.0" style="-fx-background-color: #77d915;" text="Titlu" />
-         <TableColumn prefWidth="104.0" style="-fx-background-color: #77d915;" text="Autor" />
-         <TableColumn prefWidth="82.0" style="-fx-background-color: #77d915;" text="Status" />
-         <TableColumn prefWidth="155.0" style="-fx-background-color: #77d915;" text="Data imprumutului" />
+         <TableColumn prefWidth="106.0" style="-fx-background-color: #77d915;" text="Numar imprumut">
+            <cellValueFactory>
+               <PropertyValueFactory property="id" />
+            </cellValueFactory>
+         </TableColumn>
+         <TableColumn prefWidth="100.0" style="-fx-background-color: #77d915;" text="Ziua imprumut">
+            <cellValueFactory>
+               <PropertyValueFactory property="dayOfLoan" />
+            </cellValueFactory>
+         </TableColumn>
+         <TableColumn prefWidth="92.0" style="-fx-background-color: #77d915;" text="Deadline">
+            <cellValueFactory>
+               <PropertyValueFactory property="deadline" />
+            </cellValueFactory>
+         </TableColumn>
+         <TableColumn prefWidth="267.0" style="-fx-background-color: #77d915;" text="Carte">
+            <cellValueFactory>
+               <PropertyValueFactory property="book" />
+            </cellValueFactory>
+         </TableColumn>
+         <TableColumn fx:id="returned" prefWidth="72.0" style="-fx-background-color: #77d915;" text="Returneaza!" />
       </columns>
    </TableView>
    <Label layoutX="454.0" layoutY="71.0" text="Carti imprumutate:" />
-   <TextField fx:id="loadIdTextField" layoutX="691.0" layoutY="540.0" style="-fx-background-color: #77d915;" />
-   <Label layoutX="745.0" layoutY="514.0" text="Numar imprumut:" />
-   <Button fx:id="returnButton" layoutX="766.0" layoutY="575.0" mnemonicParsing="false" onAction="#returnButtonAction" style="-fx-background-color: #1e90ff;" text="Returneaza" />
    <Label layoutX="914.0" layoutY="529.0" text="CNP:" />
    <Label layoutX="971.0" layoutY="508.0" text="Inregistrare cititor nou:" />
    <TextField fx:id="CNPTextField" layoutX="947.0" layoutY="525.0" />
@@ -60,4 +74,5 @@
    <Label layoutX="904.0" layoutY="685.0" text="Parola:" />
    <TextField fx:id="PasswordTextField" layoutX="947.0" layoutY="681.0" />
    <Button fx:id="registerButton" layoutX="1012.0" layoutY="720.0" mnemonicParsing="false" onAction="#registerButtonAction" style="-fx-background-color: #1e90ff;" text="Inregistreaza" />
+   <Button fx:id="managementButton" layoutX="638.0" layoutY="578.0" mnemonicParsing="false" onAction="#managementButtonAction" style="-fx-background-color: #1e90ff;" text="Management carti" />
 </AnchorPane>

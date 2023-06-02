@@ -86,6 +86,15 @@ public class BookLoan extends Entity<Integer>implements Serializable {
 
     @Override
     public String toString() {
+        if (librarian == null)
+            return "BookLoan{" +
+                    "id=" + getId() +
+                    ", dayOfLoan=" + dayOfLoan +
+                    ", deadline=" + deadline +
+                    ", idLibrarian - not returned yet" +
+                    ", idReader=" + reader.getId() +
+                    ", status=" + status +
+                    '}';
         return "BookLoan{" +
                 "id=" + getId() +
                 ", dayOfLoan=" + dayOfLoan +

@@ -35,7 +35,7 @@ public class Response implements Serializable {
 
 
     public static class Builder{
-        private Response response=new Response();
+        private final Response response=new Response();
 
         public Builder type(ResponseType type) {
             response.type(type);

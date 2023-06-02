@@ -28,7 +28,7 @@ public class Request implements Serializable{
 
 
     public static class Builder {
-        private Request request = new Request();
+        private final Request request = new Request();
 
         public Builder type(RequestType type) {
             request.type(type);
