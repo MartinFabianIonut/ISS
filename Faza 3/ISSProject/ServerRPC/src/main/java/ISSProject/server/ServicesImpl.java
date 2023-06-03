@@ -20,7 +20,7 @@ public class ServicesImpl implements IService {
     private final IBookLoanRepository<Integer, BookLoan> bookLoansRepository;
     private final IReaderRepository<Integer, Reader> readerRepository;
     private final ILibrarianRepository<Integer, Librarian> librarianRepository;
-    private final Map<Integer, IObserver> iObservers;
+    private final Map<Map<Integer, String>, IObserver> iObservers;
 
     public ServicesImpl(IBookRepository<Integer, Book> bookRepository,
                         IBookLoanRepository<Integer, BookLoan> bookLoansRepository,
@@ -34,32 +34,37 @@ public class ServicesImpl implements IService {
     }
 
     @Override
-    public synchronized Reader authenticateReader(Reader employee, IObserver employeeObserver) throws MyException {
-        Reader authenticateEmployee = readerRepository.authenticateReader(employee.getUsername(), employee.getPassword());
-        if (authenticateEmployee!=null){
-            if(iObservers.get(authenticateEmployee.getId())!=null)
-                throw new MyException("User already logged in.");
-            iObservers.put(authenticateEmployee.getId(), employeeObserver);
+    public synchronized Reader authenticateReader(Reader employee, IObserver readerObserver) throws MyException {
+        Reader reader = readerRepository.authenticateReader(employee.getUsername(), employee.getPassword());
+        if (reader!=null){
+            // if the reader is already logged in, throw an exception
+            // key in map is the id of the reader and a string representing the type of the user
+            Map<Integer, String> key = Map.of(reader.getId(), "reader");
+            if(iObservers.get(key)!=null)
+                throw new MyException("Reader already logged in.");
+            // else add the reader to the map
+            iObservers.put(key, readerObserver);
         }else
             throw new MyException("Authentication failed.");
-        return authenticateEmployee;
+        return reader;
     }
 
     @Override
-    public synchronized Iterable<Book> getAllBooks() throws MyException {
+    public synchronized Iterable<Book> getAllBooks() {
         return bookRepository.getAll();
     }
 
     @Override
-    public synchronized Librarian authenticateLibrarian(Librarian employee, IObserver employeeObserver) throws MyException {
-        Librarian authenticateEmployee = librarianRepository.authenticateLibrarian(employee.getUsername(), employee.getPassword());
-        if (authenticateEmployee!=null){
-            if(iObservers.get(authenticateEmployee.getId())!=null)
-                throw new MyException("User already logged in.");
-            iObservers.put(authenticateEmployee.getId(), employeeObserver);
+    public synchronized Librarian authenticateLibrarian(Librarian employee, IObserver librarianObserver) throws MyException {
+        Librarian librarian = librarianRepository.authenticateLibrarian(employee.getUsername(), employee.getPassword());
+        if (librarian!=null){
+            Map<Integer, String> key = Map.of(librarian.getId(), "librarian");
+            if(iObservers.get(key)!=null)
+                throw new MyException("Librarian already logged in.");
+            iObservers.put(key, librarianObserver);
         }else
             throw new MyException("Authentication failed.");
-        return authenticateEmployee;
+        return librarian;
     }
 
     @Override
@@ -70,14 +75,16 @@ public class ServicesImpl implements IService {
     }
 
     @Override
-    public synchronized void logoutReader(Reader employee) throws MyException {
-        IObserver localClient= iObservers.remove(employee.getId());
+    public synchronized void logoutReader(Reader reader) throws MyException {
+        // Remove the reader from the map
+        Map<Integer, String> key = Map.of(reader.getId(), "reader");
+        IObserver localClient= iObservers.remove(key);
         if (localClient==null)
-            throw new MyException("User "+employee.getId()+" is not logged in.");
+            throw new MyException("Reader "+reader+" is not logged in.");
     }
 
     @Override
-    public synchronized void loanBook(Reader reader, Book book) throws MyException {
+    public synchronized void loanBook(Reader reader, Book book) {
         // Create bookLoan with day of loan = today and day of return = today + 14 days, status = STILL_BORROWED,
         // librarian = null, reader = the reader who logged in, book = the book that was loaned
         BookLoan bookLoan = new BookLoan(0, today(), todayPlus14(), Status.STILL_BORROWED);
@@ -92,7 +99,7 @@ public class ServicesImpl implements IService {
     }
 
     @Override
-    public synchronized void returnBook(Librarian librarian, Integer loan) throws MyException {
+    public synchronized void returnBook(Librarian librarian, Integer loan) {
         BookLoan bookLoan = bookLoansRepository.findById(loan);
         // Set the librarian who logged in as the librarian who loaned the book
         bookLoan.setLibrarian(librarian);
@@ -137,10 +144,11 @@ public class ServicesImpl implements IService {
 
 
     @Override
-    public synchronized void logoutLibrarian(Librarian employee) throws MyException {
-        IObserver localClient = iObservers.remove(employee.getId());
+    public synchronized void logoutLibrarian(Librarian librarian) throws MyException {
+        Map<Integer, String> key = Map.of(librarian.getId(), "librarian");
+        IObserver localClient = iObservers.remove(key);
         if (localClient == null)
-            throw new MyException("User " + employee.getId() + " is not logged in.");
+            throw new MyException("Librarian " + librarian + " is not logged in.");
     }
 
     @Override
@@ -152,7 +160,6 @@ public class ServicesImpl implements IService {
                 iObserver.showBooks();
             }
         } catch (MyException e) {
-            e.printStackTrace();
             throw new MyException("Book is still borrowed. Cannot delete.");
         }
     }

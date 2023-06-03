@@ -19,14 +19,11 @@ public class HelloApplication extends Application {
     private static String defaultServer = "localhost";
 
     public void start(Stage primaryStage) throws Exception {
-        System.out.println("In start");
         Properties clientProps = new Properties();
         try {
             clientProps.load(HelloApplication.class.getResourceAsStream("/library.properties"));
-            System.out.println("Reader properties set. ");
             clientProps.list(System.out);
         } catch (IOException e) {
-            System.err.println("Cannot find library.properties " + e);
             return;
         }
         String serverIP = clientProps.getProperty("server.host", defaultServer);
@@ -64,7 +61,7 @@ public class HelloApplication extends Application {
 
         loginController.init();
 
-        primaryStage.setTitle("MPP server-client app");
+        primaryStage.setTitle("Library app");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

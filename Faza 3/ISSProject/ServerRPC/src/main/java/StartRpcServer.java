@@ -32,11 +32,11 @@ public class StartRpcServer {
             System.err.println("Cannot find server.properties "+e);
             return;
         }
-        ILibrarianRepository<Integer, Librarian> librarianDBIRepository = new LibrarianDBIRepository();
-        IReaderRepository<Integer, Reader> readerDBIRepository = new ReaderDBIRepository();
-        IBookRepository<Integer, Book> bookDBIRepository = new BookDBIRepository();
-        IBookLoanRepository<Integer, BookLoan> bookLoansDBIRepository = new BookLoanDBIRepository();
-        IService serverImpl=new ServicesImpl(bookDBIRepository, bookLoansDBIRepository,readerDBIRepository,librarianDBIRepository);
+        ILibrarianRepository<Integer, Librarian> librarianRepository = new LibrarianDBIRepository();
+        IReaderRepository<Integer, Reader> readerRepository = new ReaderDBIRepository();
+        IBookRepository<Integer, Book> bookRepository = new BookDBIRepository();
+        IBookLoanRepository<Integer, BookLoan> bookLoanRepository = new BookLoanDBIRepository();
+        IService service=new ServicesImpl(bookRepository, bookLoanRepository,readerRepository,librarianRepository);
 
         int serverPort=defaultPort;
         try {
@@ -46,7 +46,7 @@ public class StartRpcServer {
             System.err.println("Using default port "+defaultPort);
         }
         System.out.println("Starting server on port: "+serverPort);
-        AbstractServer server = new RpcConcurrentServer(serverPort, serverImpl);
+        AbstractServer server = new RpcConcurrentServer(serverPort, service);
         try {
             server.start();
         } catch (ServerException e) {

@@ -2,6 +2,7 @@ package ISSProject.persistance.repository.jdbc;
 
 import ISSProject.domain.BookLoan;
 import ISSProject.persistance.repository.IBookLoanRepository;
+import ISSProject.service.MyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -97,7 +98,7 @@ public class BookLoanDBIRepository implements IBookLoanRepository<Integer, BookL
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer id) throws MyException{
         logger.traceEntry("delete loan");
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = null;
@@ -115,6 +116,7 @@ public class BookLoanDBIRepository implements IBookLoanRepository<Integer, BookL
                 if (tx != null)
                     tx.rollback();
                 logger.error("ERROR for delete in BookLoanDBIRepository: " + ex);
+                throw new MyException("Error for delete in BookLoanDBIRepository: " + ex);
             }
         }
     }

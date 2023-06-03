@@ -21,7 +21,7 @@ public class ServicesRpcProxy implements IService {
     private final String host;
     private final int port;
 
-    private IObserver employeeObserver;
+    private IObserver observer;
 
     private ObjectInputStream input;
     private ObjectOutputStream output;
@@ -44,7 +44,7 @@ public class ServicesRpcProxy implements IService {
             input.close();
             output.close();
             connection.close();
-            employeeObserver = null;
+            observer = null;
             logger.info("Closed connection");
         } catch (IOException e) {
             logger.error("Error closing connection: " + e);
@@ -95,7 +95,7 @@ public class ServicesRpcProxy implements IService {
     }
 
     private void handleUpdate(Response response) {
-        employeeObserver.showBooks();
+        observer.showBooks();
     }
 
     private boolean isUpdate(Response response) {
@@ -109,7 +109,7 @@ public class ServicesRpcProxy implements IService {
         sendRequest(req);
         Response response = readResponse();
         if (response.type() == ResponseType.OK) {
-            this.employeeObserver = employeeObserver;
+            this.observer = employeeObserver;
             logger.info("Logged in");
             return (Reader) response.data();
         }
@@ -129,7 +129,7 @@ public class ServicesRpcProxy implements IService {
         sendRequest(req);
         Response response = readResponse();
         if (response.type() == ResponseType.OK) {
-            this.employeeObserver = employeeObserver;
+            this.observer = employeeObserver;
             logger.info("Logged in");
             return (Librarian) response.data();
         }

@@ -12,22 +12,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ReaderController implements Initializable, IObserver {
 
+    @FXML
+    Button seeBorrowedBooksButton;
     private Reader reader;
     private IService service;
     private Stage loginStage;
@@ -48,12 +46,12 @@ public class ReaderController implements Initializable, IObserver {
     }
 
     @FXML
-    public void setReader(Reader employee) {
-        this.reader = employee;
+    public void setReader(Reader reader) {
+        this.reader = reader;
     }
 
     @FXML
-    public void setService(IService service) throws MyException {
+    public void setService(IService service) {
         this.service = service;
     }
 
@@ -62,13 +60,16 @@ public class ReaderController implements Initializable, IObserver {
         this.loginStage = stage;
     }
 
-    private void showAllBooks() throws MyException {
-        List<Book> allBooks = (List<Book>) this.service.getAllBooks();
-        allBooks = allBooks.stream().filter(book -> book.getStatus() == Status.AVAILABLE).toList();
-        bookObservableList = FXCollections.observableArrayList(allBooks);
+    private void showAvailableBooks() throws MyException {
+        List<Book> availableBooks = (List<Book>) this.service.getAllBooks();
+        availableBooks = availableBooks.stream().filter(book -> book.getStatus() == Status.AVAILABLE).toList();
+        bookObservableList = FXCollections.observableArrayList(availableBooks);
         allBooksTableView.setItems(bookObservableList);
         allBooksTableView.refresh();
+    }
 
+    @FXML
+    private void showBorrowedBooks() throws MyException {
         List<BookLoan> borrowedBooks = (List<BookLoan>) service.getAllBookLoans();
         borrowedBooks = borrowedBooks.stream().filter(bookLoan -> Objects.equals(bookLoan.getReader().getId(), reader.getId())).toList();
         borrowedBookObservableList = FXCollections.observableArrayList(borrowedBooks);
@@ -79,8 +80,8 @@ public class ReaderController implements Initializable, IObserver {
     private void initialiseTable() {
         loan.setCellFactory(new Callback<>() {
             @Override
-            public TableCell call(final TableColumn<Book, String> param) {
-                return new TableCell<Book, String>() {
+            public TableCell<Book,String> call(final TableColumn<Book, String> param) {
+                return new TableCell<>() {
                     final Button loanButton = new Button("Loan");
 
                     @Override
@@ -95,7 +96,6 @@ public class ReaderController implements Initializable, IObserver {
                                 book.setStatus(Status.BORROWED);
                                 try {
                                     service.loanBook(reader, book);
-                                    showAllBooks();
                                 } catch (MyException e) {
                                     System.out.println("Loan error " + e);
                                 }
@@ -111,7 +111,7 @@ public class ReaderController implements Initializable, IObserver {
 
     public void init() {
         try {
-            showAllBooks();
+            showAvailableBooks();
         } catch (MyException e) {
             throw new RuntimeException(e);
         }
@@ -120,7 +120,8 @@ public class ReaderController implements Initializable, IObserver {
     public void showBooks() {
         Platform.runLater(() -> {
             try {
-                showAllBooks();
+                showAvailableBooks();
+                showBorrowedBooks();
             } catch (MyException e) {
                 throw new RuntimeException(e);
             }

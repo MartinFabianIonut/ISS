@@ -3,6 +3,7 @@ package ISSProject.persistance.repository.jdbc;
 import ISSProject.domain.Reader;
 import ISSProject.persistance.repository.IReaderRepository;
 
+import ISSProject.service.MyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -101,7 +102,7 @@ public class ReaderDBIRepository implements IReaderRepository<Integer, Reader> {
 
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer id) throws MyException {
         logger.traceEntry("delete reader");
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = null;
@@ -119,6 +120,7 @@ public class ReaderDBIRepository implements IReaderRepository<Integer, Reader> {
                 if (tx != null)
                     tx.rollback();
                 logger.error("ERROR for delete in ReaderDBIRepository: " + ex);
+                throw new MyException("ERROR for delete in ReaderDBIRepository: " + ex);
             }
         }
     }

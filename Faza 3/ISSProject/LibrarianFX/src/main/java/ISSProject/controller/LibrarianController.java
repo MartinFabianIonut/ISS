@@ -12,17 +12,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LibrarianController implements Initializable, IObserver {
@@ -39,10 +36,8 @@ public class LibrarianController implements Initializable, IObserver {
     ObservableList<BookLoan> borrowedBookObservableList;
     @FXML
     TableColumn<BookLoan, String> returned;
-
     @FXML
-    Button registerButton, managementButton;
-
+    Button registerButton, managementButton, seeBorrowedBooksButton;
     @FXML
     TextField CNPTextField, NumeTextField, AdresaTextField, TelefonTextField, UsernameTextField, PasswordTextField;
 
@@ -52,12 +47,12 @@ public class LibrarianController implements Initializable, IObserver {
     }
 
     @FXML
-    public void setLibrarian(Librarian employee) {
-        this.librarian = employee;
+    public void setLibrarian(Librarian librarian) {
+        this.librarian = librarian;
     }
 
     @FXML
-    public void setService(IService service) throws MyException {
+    public void setService(IService service) {
         this.service = service;
     }
 
@@ -66,18 +61,19 @@ public class LibrarianController implements Initializable, IObserver {
         this.loginStage = stage;
     }
 
-    private void showAllBooks() throws MyException {
-        List<Book> allBooks = (List<Book>) this.service.getAllBooks();
-        allBooks = allBooks.stream().filter(book -> book.getStatus() == Status.AVAILABLE).toList();
-        bookObservableList = FXCollections.observableArrayList(allBooks);
+    private void showAvailableBooks() throws MyException {
+        List<Book> availableBooks = (List<Book>) this.service.getAllBooks();
+        availableBooks = availableBooks.stream().filter(book -> book.getStatus() == Status.AVAILABLE).toList();
+        bookObservableList = FXCollections.observableArrayList(availableBooks);
         allBooksTableView.setItems(bookObservableList);
         allBooksTableView.refresh();
     }
 
+    @FXML
     private void showBorrowedBooks() throws MyException {
-        List<BookLoan> allBookLoans = (List<BookLoan>) this.service.getAllBookLoans();
-        allBookLoans = allBookLoans.stream().filter(bookLoan -> bookLoan.getStatus() == Status.STILL_BORROWED).toList();
-        borrowedBookObservableList = FXCollections.observableArrayList(allBookLoans);
+        List<BookLoan> borrowedBooks = (List<BookLoan>) this.service.getAllBookLoans();
+        borrowedBooks = borrowedBooks.stream().filter(bookLoan -> bookLoan.getStatus() == Status.STILL_BORROWED).toList();
+        borrowedBookObservableList = FXCollections.observableArrayList(borrowedBooks);
         borrowedBooksTableView.setItems(borrowedBookObservableList);
         borrowedBooksTableView.refresh();
     }
@@ -85,8 +81,8 @@ public class LibrarianController implements Initializable, IObserver {
     private void initialiseTable() {
         returned.setCellFactory(new Callback<>() {
             @Override
-            public TableCell call(final TableColumn<BookLoan, String> param) {
-                return new TableCell<BookLoan, String>() {
+            public TableCell<BookLoan, String> call(final TableColumn<BookLoan, String> param) {
+                return new TableCell<>() {
                     final Button returnButton = new Button("Return");
 
                     @Override
@@ -129,8 +125,7 @@ public class LibrarianController implements Initializable, IObserver {
 
     public void init() {
         try {
-            showAllBooks();
-            showBorrowedBooks();
+            showAvailableBooks();
         } catch (MyException e) {
             throw new RuntimeException(e);
         }
@@ -139,7 +134,7 @@ public class LibrarianController implements Initializable, IObserver {
     public void showBooks() {
         Platform.runLater(() -> {
             try {
-                showAllBooks();
+                showAvailableBooks();
                 showBorrowedBooks();
             } catch (MyException e) {
                 throw new RuntimeException(e);
@@ -165,7 +160,7 @@ public class LibrarianController implements Initializable, IObserver {
         stage.close();
     }
 
-    public void registerButtonAction(ActionEvent actionEvent) {
+    public void registerButtonAction() {
         String CNP = CNPTextField.getText();
         String Nume = NumeTextField.getText();
         String Adresa = AdresaTextField.getText();
@@ -211,7 +206,7 @@ public class LibrarianController implements Initializable, IObserver {
         }
     }
 
-    public void managementButtonAction(ActionEvent actionEvent) {
+    public void managementButtonAction() {
         // open a new window
         try {
             FXMLLoader managementLoader = new FXMLLoader();
@@ -226,7 +221,6 @@ public class LibrarianController implements Initializable, IObserver {
             managementController = managementLoader.getController();
             managementController.setService(service);
             // set stage of librarian
-            managementController.setStage((Stage) CNPTextField.getScene().getWindow());
             managementController.init();
             managementStage.setTitle("Managementul bibliotecii");
             managementStage.setScene(managementScene);

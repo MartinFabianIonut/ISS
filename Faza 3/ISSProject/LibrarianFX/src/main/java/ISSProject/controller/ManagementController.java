@@ -25,7 +25,6 @@ import java.util.ResourceBundle;
 
 public class ManagementController implements Initializable, IObserver {
     private IService service;
-    private Stage librarianStage;
 
     @FXML
     TableView<Book> allBooksTableView;
@@ -52,11 +51,6 @@ public class ManagementController implements Initializable, IObserver {
         this.service = service;
     }
 
-    @FXML
-    public void setStage(Stage stage) {
-        this.librarianStage = stage;
-    }
-
     private void showAllBooks() throws MyException {
         List<Book> allBooks = (List<Book>) this.service.getAllBooks();
         bookObservableList = FXCollections.observableArrayList(allBooks);
@@ -72,8 +66,8 @@ public class ManagementController implements Initializable, IObserver {
 
         actionForDeleteOrUpdate.setCellFactory(new Callback<>() {
             @Override
-            public TableCell call(final TableColumn<Book, String> param) {
-                return new TableCell<Book, String>() {
+            public TableCell<Book, String> call(final TableColumn<Book, String> param) {
+                return new TableCell<>() {
                     final Button deleteButton = new Button("Delete");
 
                     @Override
@@ -134,7 +128,7 @@ public class ManagementController implements Initializable, IObserver {
     }
 
 
-    public void addBookButtonAction(ActionEvent actionEvent) {
+    public void addBookButtonAction() {
         String title = titlu.getText();
         String author = autor.getText();
         if (Objects.equals(title, "") || Objects.equals(author, "")) {
